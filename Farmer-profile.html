@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Profile - AgriNexa</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f8f3;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-buttons button,
+        .nav-buttons a {
+            background: white;
+            color: #2e7d32;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .profile-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background: #e8f5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Edit Button */
+        .edit-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .edit-btn:hover {
+            background: #1b5e20;
+        }
+
+        /* Profile Fields */
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field label {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 16px;
+            background: #f7f7f7;
+        }
+
+        .field input:disabled {
+            color: #444;
+            cursor: not-allowed;
+        }
+
+        .field input.editable {
+            background: white;
+            border: 2px solid #2e7d32;
+            outline: none;
+        }
+
+        /* Save / Cancel */
+        .action-buttons {
+            display: none;
+            margin-top: 30px;
+            gap: 12px;
+        }
+
+        .save-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .cancel-btn {
+            background: #777;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .save-btn:hover {
+            background: #1b5e20;
+        }
+
+        .cancel-btn:hover {
+            background: #555;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 7px;
+            display: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Bottom Buttons */
+        .bottom-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .bottom-buttons a {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .dashboard-btn {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .home-btn {
+            background: #ddd;
+            color: #333;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-buttons {
+                gap: 5px;
+            }
+
+            .nav-buttons button,
+            .nav-buttons a {
+                padding: 7px 9px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .profile-card {
+                padding: 20px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-buttons {
+                flex-direction: column;
+            }
+
+            .bottom-buttons a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <div class="logo">
+            🌱 AgriNexa
+        </div>
+
+        <div class="nav-buttons">
+
+            <button onclick="changeLanguage('en')">
+                English
+            </button>
+
+            <button onclick="changeLanguage('kn')">
+                ಕನ್ನಡ
+            </button>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <div class="profile-card">
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+
+                <div class="profile-title">
+
+                    <div class="profile-icon">
+                        👨‍🌾
+                    </div>
+
+                    <div>
+                        <h1 data-key="farmerProfile">
+                            Farmer Profile
+                        </h1>
+
+                        <p class="subtitle" data-key="manageProfile">
+                            Manage your farmer information
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- EDIT PROFILE SYMBOL -->
+                <button class="edit-btn" id="editBtn" onclick="enableEdit()">
+                    ✏️ <span data-key="editProfile">Edit Profile</span>
+                </button>
+
+            </div>
+
+
+            <!-- Profile Information -->
+            <div class="profile-info">
+
+                <!-- Name -->
+                <div class="field">
+
+                    <label data-key="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        disabled
+                    >
+
+                </div>
+
+
+                <!-- Location -->
+                <div class="field">
+
+                    <label data-key="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        disabled
+                    >
+
+                </div>
+
+
+                <!-- Crop -->
+                <div class="field">
+
+                    <label data-key="crop">
+                        Crop
+                    </label>
+
+                    <input
+                        type="text"
+                        id="crop"
+                        disabled
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+                <div class="field">
+
+                    <label data-key="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        disabled
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="field">
+
+                    <label data-key="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        disabled
+                    >
+
+                </div>
+
+
+                <!-- Role -->
+                <div class="field">
+
+                    <label data-key="role">
+                        Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="role"
+                        disabled
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Save and Cancel Buttons -->
+            <div class="action-buttons" id="actionButtons">
+
+                <button class="save-btn" onclick="saveProfile()">
+                    💾 <span data-key="saveChanges">Save Changes</span>
+                </button>
+
+                <button class="cancel-btn" onclick="cancelEdit()">
+                    ✖ <span data-key="cancel">Cancel</span>
+                </button>
+
+            </div>
+
+
+            <!-- Success Message -->
+            <div class="message success" id="successMessage">
+                ✅ <span data-key="profileUpdated">
+                    Profile updated successfully!
+                </span>
+            </div>
+
+
+            <!-- Bottom Buttons -->
+            <div class="bottom-buttons">
+
+                <a
+                    href="dashboard.html"
+                    class="dashboard-btn"
+                    data-key="backDashboard"
+                >
+                    ← Back to Dashboard
+                </a>
+
+                <a
+                    href="index.html"
+                    class="home-btn"
+                    data-key="home"
+                >
+                    🏠 Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =========================
+           LOAD USER
+        ========================= */
+
+        let user = JSON.parse(
+            localStorage.getItem("agrinexaUser")
+        );
+
+        if (!user) {
+
+            alert("Please create an account first.");
+
+            window.location.href = "register.html";
+
+        }
+
+
+        /* =========================
+           LOAD PROFILE DATA
+        ========================= */
+
+        function loadProfile() {
+
+            document.getElementById("name").value =
+                user.name || "";
+
+            document.getElementById("location").value =
+                user.location || "";
+
+            document.getElementById("crop").value =
+                user.crop || "";
+
+            document.getElementById("phone").value =
+                user.phone || "";
+
+            document.getElementById("email").value =
+                user.email || "";
+
+            document.getElementById("role").value =
+                user.role || "farmer";
+
+        }
+
+
+        loadProfile();
+
+
+        /* =========================
+           ENABLE EDIT
+        ========================= */
+
+        function enableEdit() {
+
+            const fields = [
+                "name",
+                "location",
+                "crop",
+                "phone",
+                "email"
+            ];
+
+            fields.forEach(function(id) {
+
+                const input =
+                    document.getElementById(id);
+
+                input.disabled = false;
+
+                input.classList.add("editable");
+
+            });
+
+
+            document.getElementById("actionButtons")
+                .style.display = "flex";
+
+
+            document.getElementById("editBtn")
+                .style.display = "none";
+
+        }
+
+
+        /* =========================
+           SAVE PROFILE
+        ========================= */
+
+        function saveProfile() {
+
+            user.name =
+                document.getElementById("name").value.trim();
+
+            user.location =
+                document.getElementById("location").value.trim();
+
+            user.crop =
+                document.getElementById("crop").value.trim();
+
+            user.phone =
+                document.getElementById("phone").value.trim();
+
+            user.email =
+                document.getElementById("email").value.trim();
+
+
+            if (
+                user.name === "" ||
+                user.location === "" ||
+                user.crop === "" ||
+                user.phone === "" ||
+                user.email === ""
+            ) {
+
+                alert("Please fill all profile details.");
+
+                return;
+
+            }
+
+
+            /* Save updated user */
+
+            localStorage.setItem(
+                "agrinexaUser",
+                JSON.stringify(user)
+            );
+
+
+            /* Disable fields */
+
+            const fields = [
+                "name",
+                "location",
+                "crop",
+                "phone",
+                "email"
+            ];
+
+            fields.forEach(function(id) {
+
+                const input =
+                    document.getElementById(id);
+
+                input.disabled = true;
+
+                input.classList.remove("editable");
+
+            });
+
+
+            document.getElementById("actionButtons")
+                .style.display = "none";
+
+
+            document.getElementById("editBtn")
+                .style.display = "block";
+
+
+            /* Success message */
+
+            const message =
+                document.getElementById("successMessage");
+
+            message.style.display = "block";
+
+
+            setTimeout(function() {
+
+                message.style.display = "none";
+
+            }, 3000);
+
+        }
+
+
+        /* =========================
+           CANCEL EDIT
+        ========================= */
+
+        function cancelEdit() {
+
+            loadProfile();
+
+
+            const fields = [
+                "name",
+                "location",
+                "crop",
+                "phone",
+                "email"
+            ];
+
+            fields.forEach(function(id) {
+
+                const input =
+                    document.getElementById(id);
+
+                input.disabled = true;
+
+                input.classList.remove("editable");
+
+            });
+
+
+            document.getElementById("actionButtons")
+                .style.display = "none";
+
+
+            document.getElementById("editBtn")
+                .style.display = "block";
+
+        }
+
+
+        /* =========================
+           LANGUAGE
+        ========================= */
+
+        const translations = {
+
+            en: {
+
+                farmerProfile: "Farmer Profile",
+
+                manageProfile:
+                    "Manage your farmer information",
+
+                editProfile:
+                    "Edit Profile",
+
+                fullName:
+                    "Full Name",
+
+                location:
+                    "Location",
+
+                crop:
+                    "Crop",
+
+                phone:
+                    "Phone Number",
+
+                email:
+                    "Email",
+
+                role:
+                    "Role",
+
+                saveChanges:
+                    "Save Changes",
+
+                cancel:
+                    "Cancel",
+
+                profileUpdated:
+                    "Profile updated successfully!",
+
+                backDashboard:
+                    "← Back to Dashboard",
+
+                home:
+                    "🏠 Home"
+
+            },
+
+
+            kn: {
+
+                farmerProfile:
+                    "ರೈತರ ಪ್ರೊಫೈಲ್",
+
+                manageProfile:
+                    "ನಿಮ್ಮ ರೈತರ ಮಾಹಿತಿಯನ್ನು ನಿರ್ವಹಿಸಿ",
+
+                editProfile:
+                    "ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ",
+
+                fullName:
+                    "ಪೂರ್ಣ ಹೆಸರು",
+
+                location:
+                    "ಸ್ಥಳ",
+
+                crop:
+                    "ಬೆಳೆ",
+
+                phone:
+                    "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+
+                email:
+                    "ಇಮೇಲ್",
+
+                role:
+                    "ಪಾತ್ರ",
+
+                saveChanges:
+                    "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
+
+                cancel:
+                    "ರದ್ದುಮಾಡಿ",
+
+                profileUpdated:
+                    "ಪ್ರೊಫೈಲ್ ಯಶಸ್ವಿಯಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ!",
+
+                backDashboard:
+                    "← ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
+
+                home:
+                    "🏠 ಮುಖಪುಟ"
+
+            }
+
+        };
+
+
+        /* =========================
+           CHANGE LANGUAGE
+        ========================= */
+
+        function changeLanguage(language) {
+
+            document
+                .querySelectorAll("[data-key]")
+                .forEach(function(element) {
+
+                    const key =
+                        element.getAttribute("data-key");
+
+                    if (translations[language][key]) {
+
+                        element.innerText =
+                            translations[language][key];
+
+                    }
+
+                });
+
+
+            localStorage.setItem(
+                "agrinexaLanguage",
+                language
+            );
+
+        }
+
+
+        /* =========================
+           LOAD SAVED LANGUAGE
+        ========================= */
+
+        const savedLanguage =
+            localStorage.getItem("agrinexaLanguage") || "en";
+
+        changeLanguage(savedLanguage);
+
+    </script>
+
+</body>
+</html>

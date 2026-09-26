@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa - Login</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #176b2c;
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+
+        .container {
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        /* LOGIN CARD */
+
+        .login-box {
+            width: 450px;
+            max-width: 95%;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LANGUAGE */
+
+        .language {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .language button {
+            padding: 7px 14px;
+
+            border: 1px solid #176b2c;
+
+            background: white;
+
+            color: #176b2c;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .language button:hover {
+            background: #176b2c;
+            color: white;
+        }
+
+        /* TITLE */
+
+        .icon {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #176b2c;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #176b2c;
+        }
+
+        /* LOGIN BUTTON */
+
+        .login-button {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 8px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #176b2c;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #0e4f20;
+        }
+
+        /* REGISTER */
+
+        .register-text {
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #555;
+        }
+
+        .register-text a {
+            color: #176b2c;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* BACK */
+
+        .back {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .back a {
+            color: #176b2c;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌿 AgriNexa
+        </div>
+
+        <a
+            href="index.html"
+            class="home-link"
+            id="homeLink">
+
+            Home
+
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <div class="login-box">
+
+
+            <!-- LANGUAGE -->
+
+            <div class="language">
+
+                <button
+                    onclick="toggleLanguage()"
+                    id="languageButton">
+
+                    ಕನ್ನಡ
+
+                </button>
+
+            </div>
+
+
+            <!-- ICON -->
+
+            <div class="icon">
+                🔐
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1 id="title">
+                Login
+            </h1>
+
+
+            <p
+                class="subtitle"
+                id="subtitle">
+
+                Login to your AgriNexa account
+
+            </p>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label
+                    for="email"
+                    id="emailLabel">
+
+                    Email
+
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email">
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label
+                    for="password"
+                    id="passwordLabel">
+
+                    Password
+
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password">
+
+            </div>
+
+
+            <!-- ROLE -->
+
+            <div class="form-group">
+
+                <label
+                    for="role"
+                    id="roleLabel">
+
+                    Select Your Role
+
+                </label>
+
+                <select id="role">
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="farmer">
+                        Farmer
+                    </option>
+
+                    <option value="buyer">
+                        Buyer
+                    </option>
+
+                    <option value="worker">
+                        Worker
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <button
+                class="login-button"
+                onclick="loginUser()"
+                id="loginButton">
+
+                Login
+
+            </button>
+
+
+            <!-- REGISTER -->
+
+            <p
+                class="register-text"
+                id="registerText">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </p>
+
+
+            <!-- BACK -->
+
+            <div class="back">
+
+                <a
+                    href="account.html"
+                    id="backText">
+
+                    ← Back
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        let kannada = false;
+
+
+        /* ==========================================
+           KANNADA / ENGLISH
+        ========================================== */
+
+        function toggleLanguage() {
+
+            kannada = !kannada;
+
+
+            if (kannada) {
+
+                document.getElementById("title").innerText =
+                    "ಲಾಗಿನ್";
+
+                document.getElementById("subtitle").innerText =
+                    "ನಿಮ್ಮ AgriNexa ಖಾತೆಗೆ ಲಾಗಿನ್ ಆಗಿ";
+
+                document.getElementById("homeLink").innerText =
+                    "ಮುಖಪುಟ";
+
+                document.getElementById("emailLabel").innerText =
+                    "ಇಮೇಲ್";
+
+                document.getElementById("passwordLabel").innerText =
+                    "ಪಾಸ್‌ವರ್ಡ್";
+
+                document.getElementById("roleLabel").innerText =
+                    "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+
+                document.getElementById("loginButton").innerText =
+                    "ಲಾಗಿನ್";
+
+                document.getElementById("registerText").innerHTML =
+                    'ಖಾತೆ ಇಲ್ಲವೇ? <a href="register.html">ಖಾತೆ ರಚಿಸಿ</a>';
+
+                document.getElementById("backText").innerText =
+                    "← ಹಿಂತಿರುಗಿ";
+
+                document.getElementById("languageButton").innerText =
+                    "English";
+
+                document.getElementById("email").placeholder =
+                    "ನಿಮ್ಮ ಇಮೇಲ್ ನಮೂದಿಸಿ";
+
+                document.getElementById("password").placeholder =
+                    "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ";
+
+            }
+
+            else {
+
+                document.getElementById("title").innerText =
+                    "Login";
+
+                document.getElementById("subtitle").innerText =
+                    "Login to your AgriNexa account";
+
+                document.getElementById("homeLink").innerText =
+                    "Home";
+
+                document.getElementById("emailLabel").innerText =
+                    "Email";
+
+                document.getElementById("passwordLabel").innerText =
+                    "Password";
+
+                document.getElementById("roleLabel").innerText =
+                    "Select Your Role";
+
+                document.getElementById("loginButton").innerText =
+                    "Login";
+
+                document.getElementById("registerText").innerHTML =
+                    'Don\'t have an account? <a href="register.html">Create Account</a>';
+
+                document.getElementById("backText").innerText =
+                    "← Back";
+
+                document.getElementById("languageButton").innerText =
+                    "ಕನ್ನಡ";
+
+                document.getElementById("email").placeholder =
+                    "Enter your email";
+
+                document.getElementById("password").placeholder =
+                    "Enter your password";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           LOGIN USER
+        ========================================== */
+
+        function loginUser() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const role =
+                document.getElementById("role").value;
+
+
+            if (
+                email === "" ||
+                password === "" ||
+                role === ""
+            ) {
+
+                alert("Please fill all the fields.");
+
+                return;
+
+            }
+
+
+            /* Get registered user */
+
+            const savedUser =
+                localStorage.getItem("agrinexaUser");
+
+
+            if (!savedUser) {
+
+                alert(
+                    "No account found. Please create an account first."
+                );
+
+                return;
+
+            }
+
+
+            const user =
+                JSON.parse(savedUser);
+
+
+            /* Check login details */
+
+            if (
+                user.email !== email ||
+                user.password !== password ||
+                user.role !== role
+            ) {
+
+                alert(
+                    "Email, password, or role is incorrect."
+                );
+
+                return;
+
+            }
+
+
+            /* Save login status */
+
+            localStorage.setItem(
+                "agrinexaLoggedIn",
+                "true"
+            );
+
+
+            /* Open dashboard */
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa - Get Started</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #176b2c;
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+
+        .container {
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        /* CARD */
+
+        .account-box {
+            width: 450px;
+            max-width: 95%;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+
+            text-align: center;
+        }
+
+        /* LANGUAGE */
+
+        .language {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .language button {
+            padding: 7px 14px;
+
+            border: 1px solid #176b2c;
+
+            background: white;
+
+            color: #176b2c;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .language button:hover {
+            background: #176b2c;
+            color: white;
+        }
+
+        /* ICON */
+
+        .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        /* HEADING */
+
+        h1 {
+            color: #176b2c;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* BUTTONS */
+
+        .account-button {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 15px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            background: #176b2c;
+
+            color: white;
+        }
+
+        .account-button:hover {
+            background: #0e4f20;
+        }
+
+        .login-button {
+            background: white;
+
+            color: #176b2c;
+
+            border: 2px solid #176b2c;
+        }
+
+        .login-button:hover {
+            background: #176b2c;
+            color: white;
+        }
+
+        /* BACK */
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #176b2c;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌿 AgriNexa
+        </div>
+
+        <a
+            href="index.html"
+            class="home-link"
+            id="homeLink">
+
+            Home
+
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <div class="account-box">
+
+
+            <!-- LANGUAGE -->
+
+            <div class="language">
+
+                <button
+                    onclick="toggleLanguage()"
+                    id="languageButton">
+
+                    ಕನ್ನಡ
+
+                </button>
+
+            </div>
+
+
+            <!-- ICON -->
+
+            <div class="icon">
+                🌾
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1 id="title">
+                Welcome to AgriNexa
+            </h1>
+
+
+            <p
+                class="subtitle"
+                id="subtitle">
+
+                Choose an option to continue
+
+            </p>
+
+
+            <!-- CREATE ACCOUNT -->
+
+            <button
+                class="account-button"
+                onclick="createAccount()"
+                id="createButton">
+
+                Create New Account
+
+            </button>
+
+
+            <!-- LOGIN -->
+
+            <button
+                class="account-button login-button"
+                onclick="loginAccount()"
+                id="loginButton">
+
+                Login to Existing Account
+
+            </button>
+
+
+            <!-- BACK -->
+
+            <div class="back">
+
+                <a
+                    href="index.html"
+                    id="backText">
+
+                    ← Back to Home
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let kannada = false;
+
+
+        /* =========================
+           LANGUAGE SWITCH
+        ========================= */
+
+        function toggleLanguage() {
+
+            kannada = !kannada;
+
+
+            if (kannada) {
+
+                document.getElementById("title").innerText =
+                    "AgriNexa ಗೆ ಸ್ವಾಗತ";
+
+                document.getElementById("subtitle").innerText =
+                    "ಮುಂದುವರಿಯಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ";
+
+                document.getElementById("createButton").innerText =
+                    "ಹೊಸ ಖಾತೆ ರಚಿಸಿ";
+
+                document.getElementById("loginButton").innerText =
+                    "ಈಗಿರುವ ಖಾತೆಗೆ ಲಾಗಿನ್ ಆಗಿ";
+
+                document.getElementById("homeLink").innerText =
+                    "ಮುಖಪುಟ";
+
+                document.getElementById("backText").innerText =
+                    "← ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ";
+
+                document.getElementById("languageButton").innerText =
+                    "English";
+
+            }
+
+            else {
+
+                document.getElementById("title").innerText =
+                    "Welcome to AgriNexa";
+
+                document.getElementById("subtitle").innerText =
+                    "Choose an option to continue";
+
+                document.getElementById("createButton").innerText =
+                    "Create New Account";
+
+                document.getElementById("loginButton").innerText =
+                    "Login to Existing Account";
+
+                document.getElementById("homeLink").innerText =
+                    "Home";
+
+                document.getElementById("backText").innerText =
+                    "← Back to Home";
+
+                document.getElementById("languageButton").innerText =
+                    "ಕನ್ನಡ";
+
+            }
+
+        }
+
+
+        /* =========================
+           CREATE ACCOUNT
+        ========================= */
+
+        function createAccount() {
+
+            window.location.href = "register.html";
+
+        }
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        function loginAccount() {
+
+            window.location.href = "login.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

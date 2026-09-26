@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AgriNexa - Worker Profile</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f1f8e9;
+      color: #333;
+    }
+
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    .language-btn {
+      background: white;
+      color: #2e7d32;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 35px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-icon {
+      text-align: center;
+      font-size: 65px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 25px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #444;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background: #f7f7f7;
+    }
+
+    input:disabled,
+    select:disabled {
+      color: #555;
+      background: #eeeeee;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    button {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .edit-btn {
+      background: #ff9800;
+      color: white;
+    }
+
+    .save-btn {
+      background: #2e7d32;
+      color: white;
+      display: none;
+    }
+
+    .cancel-btn {
+      background: #757575;
+      color: white;
+      display: none;
+    }
+
+    .back-btn {
+      background: #1976d2;
+      color: white;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <h1 id="pageTitle">
+      🌾 AgriNexa - Worker Profile
+    </h1>
+
+    <button
+      class="language-btn"
+      onclick="toggleLanguage()"
+      id="languageButton">
+      ಕನ್ನಡ
+    </button>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="profile-icon">
+      👷
+    </div>
+
+    <h2 id="profileTitle">
+      Worker Profile
+    </h2>
+
+
+    <!-- FULL NAME -->
+    <div class="field">
+
+      <label id="nameLabel">
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="name"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- LOCATION -->
+    <div class="field">
+
+      <label id="locationLabel">
+        Location
+      </label>
+
+      <input
+        type="text"
+        id="location"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- PHONE -->
+    <div class="field">
+
+      <label id="phoneLabel">
+        Phone Number
+      </label>
+
+      <input
+        type="text"
+        id="phone"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- AVAILABILITY -->
+    <div class="field">
+
+      <label id="availabilityLabel">
+        Availability
+      </label>
+
+      <select
+        id="availability"
+        disabled>
+
+        <option value="Available">
+          Available
+        </option>
+
+        <option value="Not Available">
+          Not Available
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- EMAIL -->
+    <div class="field">
+
+      <label id="emailLabel">
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- ROLE -->
+    <div class="field">
+
+      <label id="roleLabel">
+        Role
+      </label>
+
+      <input
+        type="text"
+        id="role"
+        value="Worker"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+      <button
+        class="edit-btn"
+        id="editButton"
+        onclick="editProfile()">
+
+        ✏️ Edit Profile
+
+      </button>
+
+
+      <button
+        class="save-btn"
+        id="saveButton"
+        onclick="saveProfile()">
+
+        💾 Save Changes
+
+      </button>
+
+
+      <button
+        class="cancel-btn"
+        id="cancelButton"
+        onclick="cancelEdit()">
+
+        ❌ Cancel
+
+      </button>
+
+    </div>
+
+
+    <!-- BACK BUTTON -->
+    <button
+      class="back-btn"
+      id="backButton"
+      onclick="goBack()">
+
+      ⬅️ Back to Dashboard
+
+    </button>
+
+
+    <div
+      class="message"
+      id="message">
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let originalData = {};
+
+    let kannada = false;
+
+
+    // LOAD WORKER PROFILE
+    function loadProfile() {
+
+      const userData =
+        localStorage.getItem("agrinexaUser");
+
+
+      if (!userData) {
+
+        alert("Please login first.");
+
+        window.location.href = "login.html";
+
+        return;
+      }
+
+
+      const user =
+        JSON.parse(userData);
+
+
+      document.getElementById("name").value =
+        user.name || "";
+
+
+      document.getElementById("location").value =
+        user.location || "";
+
+
+      document.getElementById("phone").value =
+        user.phone || "";
+
+
+      document.getElementById("availability").value =
+        user.availability || "Available";
+
+
+      document.getElementById("email").value =
+        user.email || "";
+
+
+      // Worker role is always Worker
+      document.getElementById("role").value =
+        "Worker";
+
+
+      originalData = {
+
+        name: user.name || "",
+
+        location: user.location || "",
+
+        phone: user.phone || "",
+
+        availability:
+          user.availability || "Available",
+
+        email: user.email || ""
+
+      };
+
+    }
+
+
+    // EDIT PROFILE
+    function editProfile() {
+
+      document.getElementById("name").disabled =
+        false;
+
+
+      document.getElementById("location").disabled =
+        false;
+
+
+      document.getElementById("phone").disabled =
+        false;
+
+
+      document.getElementById("availability").disabled =
+        false;
+
+
+      // Email cannot be edited
+      document.getElementById("email").disabled =
+        true;
+
+
+      // Role cannot be edited
+      document.getElementById("role").disabled =
+        true;
+
+
+      document.getElementById("editButton").style.display =
+        "none";
+
+
+      document.getElementById("saveButton").style.display =
+        "block";
+
+
+      document.getElementById("cancelButton").style.display =
+        "block";
+
+
+      document.getElementById("message").innerText =
+        "";
+
+    }
+
+
+    // SAVE PROFILE
+    function saveProfile() {
+
+      const userData =
+        localStorage.getItem("agrinexaUser");
+
+
+      if (!userData) {
+
+        alert("User not found.");
+
+        return;
+      }
+
+
+      const user =
+        JSON.parse(userData);
+
+
+      user.name =
+        document.getElementById("name").value;
+
+
+      user.location =
+        document.getElementById("location").value;
+
+
+      user.phone =
+        document.getElementById("phone").value;
+
+
+      user.availability =
+        document.getElementById("availability").value;
+
+
+      // Worker role
+      user.role = "worker";
+
+
+      localStorage.setItem(
+        "agrinexaUser",
+        JSON.stringify(user)
+      );
+
+
+      originalData = {
+
+        name: user.name,
+
+        location: user.location,
+
+        phone: user.phone,
+
+        availability:
+          user.availability,
+
+        email: user.email || ""
+
+      };
+
+
+      disableFields();
+
+
+      document.getElementById("message").innerText =
+        kannada
+        ? "ಪ್ರೊಫೈಲ್ ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ!"
+        : "Profile saved successfully!";
+
+    }
+
+
+    // CANCEL EDIT
+    function cancelEdit() {
+
+      document.getElementById("name").value =
+        originalData.name;
+
+
+      document.getElementById("location").value =
+        originalData.location;
+
+
+      document.getElementById("phone").value =
+        originalData.phone;
+
+
+      document.getElementById("availability").value =
+        originalData.availability;
+
+
+      // Worker role always remains Worker
+      document.getElementById("role").value =
+        "Worker";
+
+
+      disableFields();
+
+
+      document.getElementById("message").innerText =
+        "";
+
+    }
+
+
+    // DISABLE FIELDS
+    function disableFields() {
+
+      document.getElementById("name").disabled =
+        true;
+
+
+      document.getElementById("location").disabled =
+        true;
+
+
+      document.getElementById("phone").disabled =
+        true;
+
+
+      document.getElementById("availability").disabled =
+        true;
+
+
+      document.getElementById("email").disabled =
+        true;
+
+
+      document.getElementById("role").disabled =
+        true;
+
+
+      document.getElementById("editButton").style.display =
+        "block";
+
+
+      document.getElementById("saveButton").style.display =
+        "none";
+
+
+      document.getElementById("cancelButton").style.display =
+        "none";
+
+    }
+
+
+    // BACK TO DASHBOARD
+    function goBack() {
+
+      window.location.href =
+        "dashboard.html";
+
+    }
+
+
+    // LANGUAGE SWITCH
+    function toggleLanguage() {
+
+      kannada = !kannada;
+
+
+      if (kannada) {
+
+        document.getElementById("pageTitle").innerText =
+          "🌾 AgriNexa - ಕಾರ್ಮಿಕರ ಪ್ರೊಫೈಲ್";
+
+
+        document.getElementById("languageButton").innerText =
+          "English";
+
+
+        document.getElementById("profileTitle").innerText =
+          "ಕಾರ್ಮಿಕರ ಪ್ರೊಫೈಲ್";
+
+
+        document.getElementById("nameLabel").innerText =
+          "ಪೂರ್ಣ ಹೆಸರು";
+
+
+        document.getElementById("locationLabel").innerText =
+          "ಸ್ಥಳ";
+
+
+        document.getElementById("phoneLabel").innerText =
+          "ದೂರವಾಣಿ ಸಂಖ್ಯೆ";
+
+
+        document.getElementById("availabilityLabel").innerText =
+          "ಲಭ್ಯತೆ";
+
+
+        document.getElementById("emailLabel").innerText =
+          "ಇಮೇಲ್";
+
+
+        document.getElementById("roleLabel").innerText =
+          "ಪಾತ್ರ";
+
+
+        document.getElementById("role").value =
+          "ಕಾರ್ಮಿಕ";
+
+
+        document.getElementById("editButton").innerText =
+          "✏️ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ";
+
+
+        document.getElementById("saveButton").innerText =
+          "💾 ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ";
+
+
+        document.getElementById("cancelButton").innerText =
+          "❌ ರದ್ದುಮಾಡಿ";
+
+
+        document.getElementById("backButton").innerText =
+          "⬅️ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ";
+
+
+        // Availability options
+        document.querySelector(
+          '#availability option[value="Available"]'
+        ).textContent =
+          "ಲಭ್ಯವಿದೆ";
+
+
+        document.querySelector(
+          '#availability option[value="Not Available"]'
+        ).textContent =
+          "ಲಭ್ಯವಿಲ್ಲ";
+
+      }
+
+      else {
+
+        document.getElementById("pageTitle").innerText =
+          "🌾 AgriNexa - Worker Profile";
+
+
+        document.getElementById("languageButton").innerText =
+          "ಕನ್ನಡ";
+
+
+        document.getElementById("profileTitle").innerText =
+          "Worker Profile";
+
+
+        document.getElementById("nameLabel").innerText =
+          "Full Name";
+
+
+        document.getElementById("locationLabel").innerText =
+          "Location";
+
+
+        document.getElementById("phoneLabel").innerText =
+          "Phone Number";
+
+
+        document.getElementById("availabilityLabel").innerText =
+          "Availability";
+
+
+        document.getElementById("emailLabel").innerText =
+          "Email";
+
+
+        document.getElementById("roleLabel").innerText =
+          "Role";
+
+
+        document.getElementById("role").value =
+          "Worker";
+
+
+        document.getElementById("editButton").innerText =
+          "✏️ Edit Profile";
+
+
+        document.getElementById("saveButton").innerText =
+          "💾 Save Changes";
+
+
+        document.getElementById("cancelButton").innerText =
+          "❌ Cancel";
+
+
+        document.getElementById("backButton").innerText =
+          "⬅️ Back to Dashboard";
+
+
+        // Availability options
+        document.querySelector(
+          '#availability option[value="Available"]'
+        ).textContent =
+          "Available";
+
+
+        document.querySelector(
+          '#availability option[value="Not Available"]'
+        ).textContent =
+          "Not Available";
+
+      }
+
+    }
+
+
+    // PAGE LOAD
+    window.onload = loadProfile;
+
+  </script>
+
+</body>
+</html>

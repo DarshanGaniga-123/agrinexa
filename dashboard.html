@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa - Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: #176b2c;
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .logout-button {
+            background: white;
+            color: #176b2c;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-button:hover {
+            background: #e8f5e9;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px;
+        }
+
+        /* ================= WELCOME ================= */
+
+        .welcome-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .welcome-card h1 {
+            color: #176b2c;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .welcome-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .profile-card h2 {
+            color: #176b2c;
+            margin-bottom: 20px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .profile-item {
+            background: #f1f8f3;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .profile-item strong {
+            display: block;
+            color: #176b2c;
+            margin-bottom: 6px;
+        }
+
+        .profile-item span {
+            color: #444;
+        }
+
+        /* ================= PROFILE BUTTON ================= */
+
+        .profile-button-area {
+            margin-top: 20px;
+        }
+
+        .profile-button {
+            display: inline-block;
+            background: #176b2c;
+            color: white;
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+        }
+
+        .profile-button:hover {
+            background: #0e4f20;
+        }
+
+        /* ================= SERVICES ================= */
+
+        .services-title {
+            color: #176b2c;
+            margin-bottom: 18px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 25px 18px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .service-card h3 {
+            color: #176b2c;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 63px;
+        }
+
+        .service-card button {
+            margin-top: 15px;
+            background: #176b2c;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .service-card button:hover {
+            background: #0e4f20;
+        }
+
+        /* ================= ROLE MESSAGE ================= */
+
+        .role-message {
+            margin-top: 25px;
+            background: #e8f5e9;
+            border-left: 5px solid #176b2c;
+            padding: 18px;
+            border-radius: 8px;
+            line-height: 1.5;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-card h1 {
+                font-size: 25px;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌿 AgriNexa
+        </div>
+
+        <div class="nav-right">
+
+            <a
+                href="index.html"
+                class="home-link">
+
+                Home
+
+            </a>
+
+            <button
+                class="logout-button"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+
+            <h1 id="welcomeTitle">
+                Welcome to AgriNexa
+            </h1>
+
+            <p id="welcomeText">
+                Your agricultural dashboard
+            </p>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section class="profile-card">
+
+            <h2>
+                👤 My Profile
+            </h2>
+
+
+            <div class="profile-grid">
+
+
+                <!-- NAME -->
+
+                <div class="profile-item">
+
+                    <strong>
+                        Name
+                    </strong>
+
+                    <span id="userName">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="profile-item">
+
+                    <strong>
+                        Location
+                    </strong>
+
+                    <span id="userLocation">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="profile-item">
+
+                    <strong>
+                        Phone
+                    </strong>
+
+                    <span id="userPhone">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="profile-item">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    <span id="userEmail">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="profile-item">
+
+                    <strong>
+                        Role
+                    </strong>
+
+                    <span id="userRole">
+                        -
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PROFILE BUTTON -->
+
+            <div class="profile-button-area">
+
+                <a
+                    href="#"
+                    class="profile-button"
+                    id="profileButton">
+
+                    View My Profile
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <h2 class="services-title">
+            🌾 Agricultural Services
+        </h2>
+
+
+        <section class="service-grid">
+
+
+            <!-- WEATHER -->
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🌦️
+                </div>
+
+                <h3>
+                    Weather
+                </h3>
+
+                <p>
+                    Check weather information and agricultural advice.
+                </p>
+
+                <button
+                    onclick="openPage('weather.html')">
+
+                    Open
+
+                </button>
+
+            </div>
+
+
+            <!-- BUYERS -->
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Buyers
+                </h3>
+
+                <p>
+                    Find buyers and check crop prices.
+                </p>
+
+                <button
+                    onclick="openPage('buyer profile.html')">
+
+                    Open
+
+                </button>
+
+            </div>
+
+
+            <!-- WORKERS -->
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    👨‍🌾
+                </div>
+
+                <h3>
+                    Workers
+                </h3>
+
+                <p>
+                    Find agricultural workers near you.
+                </p>
+
+                <button
+                    onclick="openPage('worker profile.html')">
+
+                    Open
+
+                </button>
+
+            </div>
+
+
+            <!-- FARMERS -->
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🌾
+                </div>
+
+                <h3>
+                    Farmers
+                </h3>
+
+                <p>
+                    Connect with nearby farmers.
+                </p>
+
+                <button
+                    onclick="openPage('Farmer-profile.html')">
+
+                    Open
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ROLE MESSAGE -->
+
+        <div
+            class="role-message"
+            id="roleMessage">
+
+            Your personalized dashboard will appear here.
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ==========================================
+           LOAD USER
+        ========================================== */
+
+        function loadUser() {
+
+            const savedUser =
+                localStorage.getItem("agrinexaUser");
+
+
+            if (!savedUser) {
+
+                alert("Please create an account or login first.");
+
+                window.location.href = "account.html";
+
+                return;
+
+            }
+
+
+            const user =
+                JSON.parse(savedUser);
+
+
+            /* USER DETAILS */
+
+            document.getElementById("userName").innerText =
+                user.name || "-";
+
+
+            document.getElementById("userLocation").innerText =
+                user.location || "-";
+
+
+            document.getElementById("userPhone").innerText =
+                user.phone || "-";
+
+
+            document.getElementById("userEmail").innerText =
+                user.email || "-";
+
+
+            document.getElementById("userRole").innerText =
+                user.role || "-";
+
+
+            /* WELCOME */
+
+            document.getElementById("welcomeTitle").innerText =
+                "Welcome, " + (user.name || "User");
+
+
+            document.getElementById("welcomeText").innerText =
+                "You are logged in as a " +
+                (user.role || "user") +
+                ".";
+
+
+            /* PROFILE PAGE */
+
+            const profileButton =
+                document.getElementById("profileButton");
+
+
+            if (user.role === "farmer") {
+
+                profileButton.href =
+                    "farmer-profile.html";
+
+            }
+
+            else if (user.role === "buyer") {
+
+                profileButton.href =
+                    "buyer-profile.html";
+
+            }
+
+            else if (user.role === "worker") {
+
+                profileButton.href =
+                    "worker-profile.html";
+
+            }
+
+            else {
+
+                profileButton.href =
+                    "#";
+
+            }
+
+
+            /* ROLE MESSAGE */
+
+            const roleMessage =
+                document.getElementById("roleMessage");
+
+
+            if (user.role === "farmer") {
+
+                roleMessage.innerText =
+                    "🌾 Farmer Dashboard: You can view buyers, workers, farmers and weather information.";
+
+            }
+
+            else if (user.role === "buyer") {
+
+                roleMessage.innerText =
+                    "🛒 Buyer Dashboard: You can connect with farmers and check available crops and prices.";
+
+            }
+
+            else if (user.role === "worker") {
+
+                roleMessage.innerText =
+                    "👨‍🌾 Worker Dashboard: You can find agricultural opportunities and manage your availability.";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           OPEN PAGE
+        ========================================== */
+
+        function openPage(page) {
+
+            window.location.href = page;
+
+        }
+
+
+        /* ==========================================
+           LOGOUT
+        ========================================== */
+
+        function logout() {
+
+            localStorage.removeItem("agrinexaLoggedIn");
+
+            window.location.href = "account.html";
+
+        }
+
+
+        /* ==========================================
+           PAGE LOAD
+        ========================================== */
+
+        window.onload = function() {
+
+            loadUser();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AgriNexa - Buyer Profile</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f1f8e9;
+      color: #333;
+    }
+
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    .language-btn {
+      background: white;
+      color: #2e7d32;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 35px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-icon {
+      text-align: center;
+      font-size: 65px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 25px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background: #f7f7f7;
+    }
+
+    input:disabled {
+      color: #555;
+      background: #eeeeee;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    button {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .edit-btn {
+      background: #ff9800;
+      color: white;
+    }
+
+    .save-btn {
+      background: #2e7d32;
+      color: white;
+      display: none;
+    }
+
+    .cancel-btn {
+      background: #757575;
+      color: white;
+      display: none;
+    }
+
+    .back-btn {
+      background: #1976d2;
+      color: white;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <h1 id="pageTitle">
+      🌾 AgriNexa - Buyer Profile
+    </h1>
+
+    <button class="language-btn" onclick="toggleLanguage()" id="languageButton">
+      ಕನ್ನಡ
+    </button>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="profile-icon">
+      🧑‍💼
+    </div>
+
+    <h2 id="profileTitle">
+      Buyer Profile
+    </h2>
+
+
+    <!-- NAME -->
+    <div class="field">
+
+      <label id="nameLabel">
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="name"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- LOCATION -->
+    <div class="field">
+
+      <label id="locationLabel">
+        Location
+      </label>
+
+      <input
+        type="text"
+        id="location"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- CROP -->
+    <div class="field">
+
+      <label id="cropLabel">
+        Crop
+      </label>
+
+      <input
+        type="text"
+        id="crop"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- PHONE -->
+    <div class="field">
+
+      <label id="phoneLabel">
+        Phone Number
+      </label>
+
+      <input
+        type="text"
+        id="phone"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- PRICE -->
+    <div class="field">
+
+      <label id="priceLabel">
+        Price per Kg
+      </label>
+
+      <input
+        type="number"
+        id="price"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- EMAIL -->
+    <div class="field">
+
+      <label id="emailLabel">
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- ROLE -->
+    <div class="field">
+
+      <label id="roleLabel">
+        Role
+      </label>
+
+      <input
+        type="text"
+        id="role"
+        value="Buyer"
+        disabled
+      >
+
+    </div>
+
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+      <button
+        class="edit-btn"
+        id="editButton"
+        onclick="editProfile()"
+      >
+        ✏️ Edit Profile
+      </button>
+
+
+      <button
+        class="save-btn"
+        id="saveButton"
+        onclick="saveProfile()"
+      >
+        💾 Save Changes
+      </button>
+
+
+      <button
+        class="cancel-btn"
+        id="cancelButton"
+        onclick="cancelEdit()"
+      >
+        ❌ Cancel
+      </button>
+
+    </div>
+
+
+    <!-- BACK -->
+    <button
+      class="back-btn"
+      id="backButton"
+      onclick="goBack()"
+    >
+      ⬅️ Back to Dashboard
+    </button>
+
+
+    <div
+      class="message"
+      id="message"
+    ></div>
+
+  </div>
+
+
+  <script>
+
+    let originalData = {};
+
+    let kannada = false;
+
+
+    // LOAD PROFILE
+    function loadProfile() {
+
+      const userData =
+        localStorage.getItem("agrinexaUser");
+
+      if (!userData) {
+
+        alert("Please login first.");
+
+        window.location.href = "login.html";
+
+        return;
+      }
+
+
+      const user = JSON.parse(userData);
+
+
+      document.getElementById("name").value =
+        user.name || "";
+
+      document.getElementById("location").value =
+        user.location || "";
+
+      document.getElementById("crop").value =
+        user.crop || "";
+
+      document.getElementById("phone").value =
+        user.phone || "";
+
+      document.getElementById("price").value =
+        user.price || "";
+
+      document.getElementById("email").value =
+        user.email || "";
+
+
+      // IMPORTANT:
+      // Buyer profile always shows Buyer
+      document.getElementById("role").value =
+        "Buyer";
+
+
+      // Store original values
+      originalData = {
+
+        name: user.name || "",
+
+        location: user.location || "",
+
+        crop: user.crop || "",
+
+        phone: user.phone || "",
+
+        price: user.price || "",
+
+        email: user.email || ""
+
+      };
+
+    }
+
+
+    // EDIT PROFILE
+    function editProfile() {
+
+      document.getElementById("name").disabled =
+        false;
+
+      document.getElementById("location").disabled =
+        false;
+
+      document.getElementById("crop").disabled =
+        false;
+
+      document.getElementById("phone").disabled =
+        false;
+
+      document.getElementById("price").disabled =
+        false;
+
+
+      // Email cannot be edited
+      document.getElementById("email").disabled =
+        true;
+
+
+      // Role cannot be edited
+      document.getElementById("role").disabled =
+        true;
+
+
+      document.getElementById("editButton").style.display =
+        "none";
+
+      document.getElementById("saveButton").style.display =
+        "block";
+
+      document.getElementById("cancelButton").style.display =
+        "block";
+
+    }
+
+
+    // SAVE PROFILE
+    function saveProfile() {
+
+      const userData =
+        localStorage.getItem("agrinexaUser");
+
+      if (!userData) {
+
+        alert("User not found.");
+
+        return;
+      }
+
+
+      const user =
+        JSON.parse(userData);
+
+
+      user.name =
+        document.getElementById("name").value;
+
+      user.location =
+        document.getElementById("location").value;
+
+      user.crop =
+        document.getElementById("crop").value;
+
+      user.phone =
+        document.getElementById("phone").value;
+
+      user.price =
+        document.getElementById("price").value;
+
+
+      /*
+        Buyer profile role is Buyer.
+      */
+      user.role = "buyer";
+
+
+      localStorage.setItem(
+        "agrinexaUser",
+        JSON.stringify(user)
+      );
+
+
+      originalData = {
+
+        name: user.name,
+
+        location: user.location,
+
+        crop: user.crop,
+
+        phone: user.phone,
+
+        price: user.price,
+
+        email: user.email || ""
+
+      };
+
+
+      disableFields();
+
+
+      document.getElementById("message").innerText =
+        kannada
+        ? "ಪ್ರೊಫೈಲ್ ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ!"
+        : "Profile saved successfully!";
+
+    }
+
+
+    // CANCEL EDIT
+    function cancelEdit() {
+
+      document.getElementById("name").value =
+        originalData.name;
+
+      document.getElementById("location").value =
+        originalData.location;
+
+      document.getElementById("crop").value =
+        originalData.crop;
+
+      document.getElementById("phone").value =
+        originalData.phone;
+
+      document.getElementById("price").value =
+        originalData.price;
+
+
+      // Role remains Buyer
+      document.getElementById("role").value =
+        "Buyer";
+
+
+      disableFields();
+
+
+      document.getElementById("message").innerText =
+        "";
+
+    }
+
+
+    // DISABLE FIELDS
+    function disableFields() {
+
+      document.getElementById("name").disabled =
+        true;
+
+      document.getElementById("location").disabled =
+        true;
+
+      document.getElementById("crop").disabled =
+        true;
+
+      document.getElementById("phone").disabled =
+        true;
+
+      document.getElementById("price").disabled =
+        true;
+
+      document.getElementById("email").disabled =
+        true;
+
+      document.getElementById("role").disabled =
+        true;
+
+
+      document.getElementById("editButton").style.display =
+        "block";
+
+      document.getElementById("saveButton").style.display =
+        "none";
+
+      document.getElementById("cancelButton").style.display =
+        "none";
+
+    }
+
+
+    // BACK TO DASHBOARD
+    function goBack() {
+
+      window.location.href =
+        "dashboard.html";
+
+    }
+
+
+    // LANGUAGE SWITCH
+    function toggleLanguage() {
+
+      kannada = !kannada;
+
+
+      if (kannada) {
+
+        document.getElementById("pageTitle").innerText =
+          "🌾 AgriNexa - ಖರೀದಿದಾರರ ಪ್ರೊಫೈಲ್";
+
+        document.getElementById("languageButton").innerText =
+          "English";
+
+        document.getElementById("profileTitle").innerText =
+          "ಖರೀದಿದಾರರ ಪ್ರೊಫೈಲ್";
+
+        document.getElementById("nameLabel").innerText =
+          "ಪೂರ್ಣ ಹೆಸರು";
+
+        document.getElementById("locationLabel").innerText =
+          "ಸ್ಥಳ";
+
+        document.getElementById("cropLabel").innerText =
+          "ಬೆಳೆ";
+
+        document.getElementById("phoneLabel").innerText =
+          "ದೂರವಾಣಿ ಸಂಖ್ಯೆ";
+
+        document.getElementById("priceLabel").innerText =
+          "ಪ್ರತಿ ಕೆ.ಜಿ. ಬೆಲೆ";
+
+        document.getElementById("emailLabel").innerText =
+          "ಇಮೇಲ್";
+
+        document.getElementById("roleLabel").innerText =
+          "ಪಾತ್ರ";
+
+        document.getElementById("role").value =
+          "ಖರೀದಿದಾರ";
+
+        document.getElementById("editButton").innerText =
+          "✏️ ಪ್ರೊಫೈಲ್ ಸಂಪಾದಿಸಿ";
+
+        document.getElementById("saveButton").innerText =
+          "💾 ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ";
+
+        document.getElementById("cancelButton").innerText =
+          "❌ ರದ್ದುಮಾಡಿ";
+
+        document.getElementById("backButton").innerText =
+          "⬅️ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ";
+
+      }
+
+      else {
+
+        document.getElementById("pageTitle").innerText =
+          "🌾 AgriNexa - Buyer Profile";
+
+        document.getElementById("languageButton").innerText =
+          "ಕನ್ನಡ";
+
+        document.getElementById("profileTitle").innerText =
+          "Buyer Profile";
+
+        document.getElementById("nameLabel").innerText =
+          "Full Name";
+
+        document.getElementById("locationLabel").innerText =
+          "Location";
+
+        document.getElementById("cropLabel").innerText =
+          "Crop";
+
+        document.getElementById("phoneLabel").innerText =
+          "Phone Number";
+
+        document.getElementById("priceLabel").innerText =
+          "Price per Kg";
+
+        document.getElementById("emailLabel").innerText =
+          "Email";
+
+        document.getElementById("roleLabel").innerText =
+          "Role";
+
+        document.getElementById("role").value =
+          "Buyer";
+
+        document.getElementById("editButton").innerText =
+          "✏️ Edit Profile";
+
+        document.getElementById("saveButton").innerText =
+          "💾 Save Changes";
+
+        document.getElementById("cancelButton").innerText =
+          "❌ Cancel";
+
+        document.getElementById("backButton").innerText =
+          "⬅️ Back to Dashboard";
+
+      }
+
+    }
+
+
+    // PAGE LOAD
+    window.onload = loadProfile;
+
+  </script>
+
+</body>
+</html>

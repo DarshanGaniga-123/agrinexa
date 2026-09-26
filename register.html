@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa - Create Account</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f8f3;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #176b2c;
+            padding: 18px 50px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .home-link:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+
+        .container {
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        /* FORM CARD */
+
+        .form-box {
+            width: 500px;
+            max-width: 95%;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* LANGUAGE */
+
+        .language {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .language button {
+            padding: 7px 14px;
+
+            border: 1px solid #176b2c;
+
+            background: white;
+
+            color: #176b2c;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .language button:hover {
+            background: #176b2c;
+            color: white;
+        }
+
+        /* TITLE */
+
+        .icon {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #176b2c;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #333;
+
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #176b2c;
+        }
+
+        /* REGISTER BUTTON */
+
+        .register-button {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 8px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #176b2c;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .register-button:hover {
+            background: #0e4f20;
+        }
+
+        /* LOGIN */
+
+        .login-text {
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #555;
+        }
+
+        .login-text a {
+            color: #176b2c;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* BACK */
+
+        .back {
+            text-align: center;
+
+            margin-top: 15px;
+        }
+
+        .back a {
+            color: #176b2c;
+
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌿 AgriNexa
+        </div>
+
+        <a
+            href="index.html"
+            class="home-link"
+            id="homeLink">
+
+            Home
+
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <div class="form-box">
+
+
+            <!-- LANGUAGE -->
+
+            <div class="language">
+
+                <button
+                    onclick="toggleLanguage()"
+                    id="languageButton">
+
+                    ಕನ್ನಡ
+
+                </button>
+
+            </div>
+
+
+            <!-- ICON -->
+
+            <div class="icon">
+                🌾
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1 id="title">
+                Create New Account
+            </h1>
+
+
+            <p
+                class="subtitle"
+                id="subtitle">
+
+                Register with AgriNexa
+
+            </p>
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label
+                    for="name"
+                    id="nameLabel">
+
+                    Full Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name">
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="form-group">
+
+                <label
+                    for="location"
+                    id="locationLabel">
+
+                    Location
+
+                </label>
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter your village or town">
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label
+                    for="phone"
+                    id="phoneLabel">
+
+                    Phone Number
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number">
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label
+                    for="email"
+                    id="emailLabel">
+
+                    Email
+
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email">
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label
+                    for="password"
+                    id="passwordLabel">
+
+                    Password
+
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password">
+
+            </div>
+
+
+            <!-- ROLE -->
+
+            <div class="form-group">
+
+                <label
+                    for="role"
+                    id="roleLabel">
+
+                    Select Your Role
+
+                </label>
+
+                <select id="role">
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="farmer">
+                        Farmer
+                    </option>
+
+                    <option value="buyer">
+                        Buyer
+                    </option>
+
+                    <option value="worker">
+                        Worker
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- REGISTER -->
+
+            <button
+                class="register-button"
+                onclick="registerUser()"
+                id="registerButton">
+
+                Create Account
+
+            </button>
+
+
+            <!-- LOGIN -->
+
+            <p
+                class="login-text"
+                id="loginText">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <!-- BACK -->
+
+            <div class="back">
+
+                <a
+                    href="account.html"
+                    id="backText">
+
+                    ← Back
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        let kannada = false;
+
+
+        /* ==========================================
+           KANNADA / ENGLISH
+        ========================================== */
+
+        function toggleLanguage() {
+
+            kannada = !kannada;
+
+
+            if (kannada) {
+
+                document.getElementById("title").innerText =
+                    "ಹೊಸ ಖಾತೆ ರಚಿಸಿ";
+
+                document.getElementById("subtitle").innerText =
+                    "AgriNexa ನಲ್ಲಿ ನೋಂದಾಯಿಸಿ";
+
+                document.getElementById("homeLink").innerText =
+                    "ಮುಖಪುಟ";
+
+                document.getElementById("nameLabel").innerText =
+                    "ಪೂರ್ಣ ಹೆಸರು";
+
+                document.getElementById("locationLabel").innerText =
+                    "ಸ್ಥಳ";
+
+                document.getElementById("phoneLabel").innerText =
+                    "ದೂರವಾಣಿ ಸಂಖ್ಯೆ";
+
+                document.getElementById("emailLabel").innerText =
+                    "ಇಮೇಲ್";
+
+                document.getElementById("passwordLabel").innerText =
+                    "ಪಾಸ್‌ವರ್ಡ್";
+
+                document.getElementById("roleLabel").innerText =
+                    "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+
+                document.getElementById("registerButton").innerText =
+                    "ಖಾತೆ ರಚಿಸಿ";
+
+                document.getElementById("loginText").innerHTML =
+                    'ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ? <a href="login.html">ಲಾಗಿನ್</a>';
+
+                document.getElementById("backText").innerText =
+                    "← ಹಿಂತಿರುಗಿ";
+
+                document.getElementById("languageButton").innerText =
+                    "English";
+
+                document.getElementById("name").placeholder =
+                    "ನಿಮ್ಮ ಹೆಸರನ್ನು ನಮೂದಿಸಿ";
+
+                document.getElementById("location").placeholder =
+                    "ನಿಮ್ಮ ಗ್ರಾಮ ಅಥವಾ ಪಟ್ಟಣವನ್ನು ನಮೂದಿಸಿ";
+
+                document.getElementById("phone").placeholder =
+                    "ನಿಮ್ಮ ದೂರವಾಣಿ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ";
+
+                document.getElementById("email").placeholder =
+                    "ನಿಮ್ಮ ಇಮೇಲ್ ನಮೂದಿಸಿ";
+
+                document.getElementById("password").placeholder =
+                    "ಪಾಸ್‌ವರ್ಡ್ ರಚಿಸಿ";
+
+            }
+
+            else {
+
+                document.getElementById("title").innerText =
+                    "Create New Account";
+
+                document.getElementById("subtitle").innerText =
+                    "Register with AgriNexa";
+
+                document.getElementById("homeLink").innerText =
+                    "Home";
+
+                document.getElementById("nameLabel").innerText =
+                    "Full Name";
+
+                document.getElementById("locationLabel").innerText =
+                    "Location";
+
+                document.getElementById("phoneLabel").innerText =
+                    "Phone Number";
+
+                document.getElementById("emailLabel").innerText =
+                    "Email";
+
+                document.getElementById("passwordLabel").innerText =
+                    "Password";
+
+                document.getElementById("roleLabel").innerText =
+                    "Select Your Role";
+
+                document.getElementById("registerButton").innerText =
+                    "Create Account";
+
+                document.getElementById("loginText").innerHTML =
+                    'Already have an account? <a href="login.html">Login</a>';
+
+                document.getElementById("backText").innerText =
+                    "← Back";
+
+                document.getElementById("languageButton").innerText =
+                    "ಕನ್ನಡ";
+
+                document.getElementById("name").placeholder =
+                    "Enter your name";
+
+                document.getElementById("location").placeholder =
+                    "Enter your village or town";
+
+                document.getElementById("phone").placeholder =
+                    "Enter your phone number";
+
+                document.getElementById("email").placeholder =
+                    "Enter your email";
+
+                document.getElementById("password").placeholder =
+                    "Create a password";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           REGISTER USER
+        ========================================== */
+
+        function registerUser() {
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const location =
+                document.getElementById("location").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const role =
+                document.getElementById("role").value;
+
+
+            if (
+                name === "" ||
+                location === "" ||
+                phone === "" ||
+                email === "" ||
+                password === "" ||
+                role === ""
+            ) {
+
+                alert("Please fill all the fields.");
+
+                return;
+
+            }
+
+
+            /* Save temporary account */
+
+            const user = {
+
+                name: name,
+
+                location: location,
+
+                phone: phone,
+
+                email: email,
+
+                password: password,
+
+                role: role
+
+            };
+
+
+            localStorage.setItem(
+                "agrinexaUser",
+                JSON.stringify(user)
+            );
+
+
+            alert(
+                "Account created successfully!"
+            );
+
+
+            /* Go to dashboard */
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
