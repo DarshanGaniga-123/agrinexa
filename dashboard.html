@@ -128,6 +128,7 @@
 
         .profile-item span {
             color: #444;
+            overflow-wrap: anywhere;
         }
 
         /* PROFILE BUTTON */
@@ -143,6 +144,9 @@
             text-decoration: none;
             padding: 11px 20px;
             border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
         }
 
         .profile-button:hover {
@@ -261,18 +265,14 @@
 
         <div class="nav-right">
 
-            <!-- HOME BUTTON -->
-            <a href="index.html" class="home-link">
+            <a href="/agrinexa/index.html"
+               class="home-link">
                 Home
             </a>
 
-            <!-- LOGOUT BUTTON -->
-            <button
-                class="logout-button"
-                onclick="logout()">
-
+            <button class="logout-button"
+                    onclick="logout()">
                 Logout
-
             </button>
 
         </div>
@@ -301,9 +301,7 @@
 
         <section class="profile-card">
 
-            <h2>
-                👤 My Profile
-            </h2>
+            <h2>👤 My Profile</h2>
 
             <div class="profile-grid">
 
@@ -334,17 +332,12 @@
 
             </div>
 
-            <!-- VIEW PROFILE BUTTON -->
-
             <div class="profile-button-area">
 
-                <a
-                    href="#"
-                    class="profile-button"
-                    id="profileButton">
-
+                <a href="#"
+                   class="profile-button"
+                   id="profileButton">
                     View My Profile
-
                 </a>
 
             </div>
@@ -389,7 +382,7 @@
                     Find buyers and check crop prices.
                 </p>
 
-                <button onclick="openPage('buyer%20profile.html')">
+                <button onclick="openPage('buyer profile.html')">
                     Open
                 </button>
 
@@ -407,7 +400,7 @@
                     Find agricultural workers near you.
                 </p>
 
-                <button onclick="openPage('worker%20profile.html')">
+                <button onclick="openPage('worker profile.html')">
                     Open
                 </button>
 
@@ -436,9 +429,7 @@
         <!-- ROLE MESSAGE -->
 
         <div class="role-message" id="roleMessage">
-
             Your personalized dashboard will appear here.
-
         </div>
 
     </main>
@@ -447,7 +438,11 @@
 
     <script>
 
-        /* LOAD USER */
+        // GITHUB PAGES WEBSITE BASE PATH
+
+        const BASE_PATH = "/agrinexa/";
+
+        // LOAD USER
 
         function loadUser() {
 
@@ -456,9 +451,10 @@
 
             if (!savedUser) {
 
-                alert("Please create an account or login first.");
+                alert("Please login first.");
 
-                window.location.href = "login.html";
+                window.location.href =
+                    BASE_PATH + "login.html";
 
                 return;
             }
@@ -466,17 +462,20 @@
             let user;
 
             try {
+
                 user = JSON.parse(savedUser);
+
             } catch (error) {
 
-                alert("User information is invalid. Please login again.");
+                alert("Invalid user information. Please login again.");
 
-                window.location.href = "login.html";
+                window.location.href =
+                    BASE_PATH + "login.html";
 
                 return;
             }
 
-            /* USER DETAILS */
+            // USER DETAILS
 
             document.getElementById("userName").innerText =
                 user.name || "-";
@@ -493,7 +492,7 @@
             document.getElementById("userRole").innerText =
                 user.role || "-";
 
-            /* WELCOME */
+            // WELCOME MESSAGE
 
             document.getElementById("welcomeTitle").innerText =
                 "Welcome, " + (user.name || "User");
@@ -502,24 +501,28 @@
                 "You are logged in as a " +
                 (user.role || "user") + ".";
 
-            /* PROFILE PAGE */
+            // PROFILE PAGE LINKS
+
+            const role =
+                (user.role || "").toLowerCase().trim();
 
             const profileButton =
                 document.getElementById("profileButton");
 
-            const role = (user.role || "").toLowerCase().trim();
-
             if (role === "farmer") {
 
-                profileButton.href = "Farmer-profile.html";
+                profileButton.href =
+                    BASE_PATH + "Farmer-profile.html";
 
             } else if (role === "buyer") {
 
-                profileButton.href = "buyer%20profile.html";
+                profileButton.href =
+                    BASE_PATH + "buyer%20profile.html";
 
             } else if (role === "worker") {
 
-                profileButton.href = "worker%20profile.html";
+                profileButton.href =
+                    BASE_PATH + "worker%20profile.html";
 
             } else {
 
@@ -529,12 +532,12 @@
 
                     event.preventDefault();
 
-                    alert("Profile page is not available for this role.");
+                    alert("No profile page is available for this role.");
 
                 };
             }
 
-            /* ROLE MESSAGE */
+            // ROLE MESSAGE
 
             const roleMessage =
                 document.getElementById("roleMessage");
@@ -560,17 +563,19 @@
                     "Welcome to AgriNexa. Explore the agricultural services available on your dashboard.";
 
             }
+
         }
 
-        /* OPEN PAGE */
+        // OPEN SERVICES
 
         function openPage(page) {
 
-            window.location.href = page;
+            window.location.href =
+                BASE_PATH + encodeURI(page);
 
         }
 
-        /* LOGOUT */
+        // LOGOUT
 
         function logout() {
 
@@ -578,11 +583,12 @@
 
             localStorage.removeItem("agrinexaUser");
 
-            window.location.href = "login.html";
+            window.location.href =
+                BASE_PATH + "login.html";
 
         }
 
-        /* PAGE LOAD */
+        // PAGE LOAD
 
         window.onload = function() {
 
