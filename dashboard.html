@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,6 @@
     <title>AgriNexa - Dashboard</title>
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,12 +22,11 @@
             min-height: 100vh;
         }
 
-        /* ================= NAVBAR ================= */
+        /* NAVBAR */
 
         .navbar {
             background: #176b2c;
             padding: 18px 50px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,7 +64,7 @@
             background: #e8f5e9;
         }
 
-        /* ================= MAIN ================= */
+        /* MAIN */
 
         .container {
             max-width: 1100px;
@@ -73,7 +72,7 @@
             padding: 35px 20px;
         }
 
-        /* ================= WELCOME ================= */
+        /* WELCOME */
 
         .welcome-card {
             background: white;
@@ -94,7 +93,7 @@
             line-height: 1.6;
         }
 
-        /* ================= PROFILE ================= */
+        /* PROFILE */
 
         .profile-card {
             background: white;
@@ -131,7 +130,7 @@
             color: #444;
         }
 
-        /* ================= PROFILE BUTTON ================= */
+        /* PROFILE BUTTON */
 
         .profile-button-area {
             margin-top: 20px;
@@ -150,7 +149,7 @@
             background: #0e4f20;
         }
 
-        /* ================= SERVICES ================= */
+        /* SERVICES */
 
         .services-title {
             color: #176b2c;
@@ -202,7 +201,7 @@
             background: #0e4f20;
         }
 
-        /* ================= ROLE MESSAGE ================= */
+        /* ROLE MESSAGE */
 
         .role-message {
             margin-top: 25px;
@@ -213,18 +212,15 @@
             line-height: 1.5;
         }
 
-        /* ================= MOBILE ================= */
+        /* MOBILE */
 
         @media (max-width: 850px) {
-
             .service-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
         }
 
         @media (max-width: 600px) {
-
             .navbar {
                 padding: 15px 20px;
             }
@@ -248,18 +244,14 @@
             .nav-right {
                 gap: 8px;
             }
-
         }
-
     </style>
 
 </head>
 
-
 <body>
 
-
-    <!-- ================= NAVBAR ================= -->
+    <!-- NAVBAR -->
 
     <header class="navbar">
 
@@ -269,14 +261,12 @@
 
         <div class="nav-right">
 
-            <a
-                href="index.html"
-                class="home-link">
-
+            <!-- HOME BUTTON -->
+            <a href="index.html" class="home-link">
                 Home
-
             </a>
 
+            <!-- LOGOUT BUTTON -->
             <button
                 class="logout-button"
                 onclick="logout()">
@@ -289,11 +279,9 @@
 
     </header>
 
-
-    <!-- ================= MAIN ================= -->
+    <!-- MAIN -->
 
     <main class="container">
-
 
         <!-- WELCOME -->
 
@@ -309,7 +297,6 @@
 
         </section>
 
-
         <!-- PROFILE -->
 
         <section class="profile-card">
@@ -318,89 +305,36 @@
                 👤 My Profile
             </h2>
 
-
             <div class="profile-grid">
 
-
-                <!-- NAME -->
-
                 <div class="profile-item">
-
-                    <strong>
-                        Name
-                    </strong>
-
-                    <span id="userName">
-                        -
-                    </span>
-
+                    <strong>Name</strong>
+                    <span id="userName">-</span>
                 </div>
 
-
-                <!-- LOCATION -->
-
                 <div class="profile-item">
-
-                    <strong>
-                        Location
-                    </strong>
-
-                    <span id="userLocation">
-                        -
-                    </span>
-
+                    <strong>Location</strong>
+                    <span id="userLocation">-</span>
                 </div>
 
-
-                <!-- PHONE -->
-
                 <div class="profile-item">
-
-                    <strong>
-                        Phone
-                    </strong>
-
-                    <span id="userPhone">
-                        -
-                    </span>
-
+                    <strong>Phone</strong>
+                    <span id="userPhone">-</span>
                 </div>
 
-
-                <!-- EMAIL -->
-
                 <div class="profile-item">
-
-                    <strong>
-                        Email
-                    </strong>
-
-                    <span id="userEmail">
-                        -
-                    </span>
-
+                    <strong>Email</strong>
+                    <span id="userEmail">-</span>
                 </div>
 
-
-                <!-- ROLE -->
-
                 <div class="profile-item">
-
-                    <strong>
-                        Role
-                    </strong>
-
-                    <span id="userRole">
-                        -
-                    </span>
-
+                    <strong>Role</strong>
+                    <span id="userRole">-</span>
                 </div>
-
 
             </div>
 
-
-            <!-- PROFILE BUTTON -->
+            <!-- VIEW PROFILE BUTTON -->
 
             <div class="profile-button-area">
 
@@ -417,269 +351,218 @@
 
         </section>
 
-
-        <!-- ================= SERVICES ================= -->
+        <!-- SERVICES -->
 
         <h2 class="services-title">
             🌾 Agricultural Services
         </h2>
 
-
         <section class="service-grid">
-
 
             <!-- WEATHER -->
 
             <div class="service-card">
 
-                <div class="service-icon">
-                    🌦️
-                </div>
+                <div class="service-icon">🌦️</div>
 
-                <h3>
-                    Weather
-                </h3>
+                <h3>Weather</h3>
 
                 <p>
                     Check weather information and agricultural advice.
                 </p>
 
-                <button
-                    onclick="openPage('weather.html')">
-
+                <button onclick="openPage('weather.html')">
                     Open
-
                 </button>
 
             </div>
-
 
             <!-- BUYERS -->
 
             <div class="service-card">
 
-                <div class="service-icon">
-                    🛒
-                </div>
+                <div class="service-icon">🛒</div>
 
-                <h3>
-                    Buyers
-                </h3>
+                <h3>Buyers</h3>
 
                 <p>
                     Find buyers and check crop prices.
                 </p>
 
-                <button
-                    onclick="openPage('buyer profile.html')">
-
+                <button onclick="openPage('buyer%20profile.html')">
                     Open
-
                 </button>
 
             </div>
-
 
             <!-- WORKERS -->
 
             <div class="service-card">
 
-                <div class="service-icon">
-                    👨‍🌾
-                </div>
+                <div class="service-icon">👨‍🌾</div>
 
-                <h3>
-                    Workers
-                </h3>
+                <h3>Workers</h3>
 
                 <p>
                     Find agricultural workers near you.
                 </p>
 
-                <button
-                    onclick="openPage('worker profile.html')">
-
+                <button onclick="openPage('worker%20profile.html')">
                     Open
-
                 </button>
 
             </div>
-
 
             <!-- FARMERS -->
 
             <div class="service-card">
 
-                <div class="service-icon">
-                    🌾
-                </div>
+                <div class="service-icon">🌾</div>
 
-                <h3>
-                    Farmers
-                </h3>
+                <h3>Farmers</h3>
 
                 <p>
                     Connect with nearby farmers.
                 </p>
 
-                <button
-                    onclick="openPage('Farmer-profile.html')">
-
+                <button onclick="openPage('Farmer-profile.html')">
                     Open
-
                 </button>
 
             </div>
 
-
         </section>
-
 
         <!-- ROLE MESSAGE -->
 
-        <div
-            class="role-message"
-            id="roleMessage">
+        <div class="role-message" id="roleMessage">
 
             Your personalized dashboard will appear here.
 
         </div>
 
-
     </main>
 
-
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
-        /* ==========================================
-           LOAD USER
-        ========================================== */
+        /* LOAD USER */
 
         function loadUser() {
 
             const savedUser =
                 localStorage.getItem("agrinexaUser");
 
-
             if (!savedUser) {
 
                 alert("Please create an account or login first.");
 
-                window.location.href = "account.html";
+                window.location.href = "login.html";
 
                 return;
-
             }
 
+            let user;
 
-            const user =
-                JSON.parse(savedUser);
+            try {
+                user = JSON.parse(savedUser);
+            } catch (error) {
 
+                alert("User information is invalid. Please login again.");
+
+                window.location.href = "login.html";
+
+                return;
+            }
 
             /* USER DETAILS */
 
             document.getElementById("userName").innerText =
                 user.name || "-";
 
-
             document.getElementById("userLocation").innerText =
                 user.location || "-";
-
 
             document.getElementById("userPhone").innerText =
                 user.phone || "-";
 
-
             document.getElementById("userEmail").innerText =
                 user.email || "-";
 
-
             document.getElementById("userRole").innerText =
                 user.role || "-";
-
 
             /* WELCOME */
 
             document.getElementById("welcomeTitle").innerText =
                 "Welcome, " + (user.name || "User");
 
-
             document.getElementById("welcomeText").innerText =
                 "You are logged in as a " +
-                (user.role || "user") +
-                ".";
-
+                (user.role || "user") + ".";
 
             /* PROFILE PAGE */
 
             const profileButton =
                 document.getElementById("profileButton");
 
+            const role = (user.role || "").toLowerCase().trim();
 
-            if (user.role === "farmer") {
+            if (role === "farmer") {
 
-                profileButton.href =
-                    "farmer-profile.html";
+                profileButton.href = "Farmer-profile.html";
 
+            } else if (role === "buyer") {
+
+                profileButton.href = "buyer%20profile.html";
+
+            } else if (role === "worker") {
+
+                profileButton.href = "worker%20profile.html";
+
+            } else {
+
+                profileButton.href = "#";
+
+                profileButton.onclick = function(event) {
+
+                    event.preventDefault();
+
+                    alert("Profile page is not available for this role.");
+
+                };
             }
-
-            else if (user.role === "buyer") {
-
-                profileButton.href =
-                    "buyer-profile.html";
-
-            }
-
-            else if (user.role === "worker") {
-
-                profileButton.href =
-                    "worker-profile.html";
-
-            }
-
-            else {
-
-                profileButton.href =
-                    "#";
-
-            }
-
 
             /* ROLE MESSAGE */
 
             const roleMessage =
                 document.getElementById("roleMessage");
 
-
-            if (user.role === "farmer") {
+            if (role === "farmer") {
 
                 roleMessage.innerText =
                     "🌾 Farmer Dashboard: You can view buyers, workers, farmers and weather information.";
 
-            }
-
-            else if (user.role === "buyer") {
+            } else if (role === "buyer") {
 
                 roleMessage.innerText =
                     "🛒 Buyer Dashboard: You can connect with farmers and check available crops and prices.";
 
-            }
-
-            else if (user.role === "worker") {
+            } else if (role === "worker") {
 
                 roleMessage.innerText =
                     "👨‍🌾 Worker Dashboard: You can find agricultural opportunities and manage your availability.";
 
-            }
+            } else {
 
+                roleMessage.innerText =
+                    "Welcome to AgriNexa. Explore the agricultural services available on your dashboard.";
+
+            }
         }
 
-
-        /* ==========================================
-           OPEN PAGE
-        ========================================== */
+        /* OPEN PAGE */
 
         function openPage(page) {
 
@@ -687,23 +570,19 @@
 
         }
 
-
-        /* ==========================================
-           LOGOUT
-        ========================================== */
+        /* LOGOUT */
 
         function logout() {
 
             localStorage.removeItem("agrinexaLoggedIn");
 
-            window.location.href = "account.html";
+            localStorage.removeItem("agrinexaUser");
+
+            window.location.href = "login.html";
 
         }
 
-
-        /* ==========================================
-           PAGE LOAD
-        ========================================== */
+        /* PAGE LOAD */
 
         window.onload = function() {
 
@@ -712,7 +591,6 @@
         };
 
     </script>
-
 
 </body>
 
